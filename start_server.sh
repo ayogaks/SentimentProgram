@@ -1,5 +1,5 @@
 DOCROOT="$(pwd)/"
-ROUTER="$(pwd)/router.php"
+ROUTER="$(pwd)/app/index.php"
 
 echo $DOCROOT
 

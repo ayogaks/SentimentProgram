@@ -1,22 +1,20 @@
 <?php
 
-$request_method = $_SERVER['REQUEST_METHOD'];
+require_once 'app/controller/IndexController.php';
 
-if ($request_method === "GET") {
-    echo "Bagian pertama yg nampilin form input si sentimen. Kalo ada parameter review berarti inputnya sentimen dalam bentuk teks";
-} else if ($request_method === "GET") {
+// Grabs the URI and breaks it apart in case we have querystring stuff
+$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 
-    echo "Bagian handle request yang ada input sentimen dalam bentuk file";
+// Route it up!
+switch ($request_uri[0]) {
+        // Home page
+    case '/':
+        \Controller\IndexController::instance()->serve();
+        break;
 
-    #Pura2nya bagian ini ngejalanin si script Random Forest
-    # Outputnya dari si script (-1 atau +1) disimpan di $pyout 
-    $cwd = getcwd();
-    // echo $cwd;
-    $path_to_model = "\\model\\test.py";
-
-    echo "Executing " . $cwd . $path_to_model;
-
-    $pyout = exec("python " . $cwd . $path_to_model);
-
-    echo $pyout;
+        // Everything else
+    default:
+        header('HTTP/1.0 404 Not Found');
+        require 'view/404.php';
+        break;
 }
