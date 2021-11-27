@@ -37,7 +37,7 @@ class  IndexController
 
         //Ambil parameter di url 
         //Contoh request url :http://localhost:8080/?review="Agak kurang enak" , ambil parameternya pake $_GET['review]
-
+        
         //$review = $_GET['review];
         //$sentiment = \Model\Sentiment::handleSentiment($review, false);
         // echo  \View\RenderView::render("pages\\indexview.php", ["sentiment"=>"$sentiment"]);
