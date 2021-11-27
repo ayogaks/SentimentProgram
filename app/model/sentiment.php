@@ -5,7 +5,7 @@ namespace Model;
 class Sentiment
 {
 
-    public function handleSentiment($review, $isAFile = false)
+    public static function handleSentiment($review, $isAFile = false)
     {
 
         $cwd = getcwd();
@@ -13,6 +13,7 @@ class Sentiment
         $path_to_model = "\\pythonmodel\\test.py";
 
         // echo "Executing " . $cwd . $path_to_model;
+        $pyout = 0;
 
         if ($isAFile) {
             #jalanin script yang bakal handle input text 1 review
@@ -21,5 +22,7 @@ class Sentiment
             #jalanin script yang bakal handle input file review
             $pyout = exec("python " . $cwd . $path_to_model." -f $review");
         }
+
+        return $pyout;
     }
 }
