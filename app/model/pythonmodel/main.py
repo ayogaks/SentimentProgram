@@ -1,13 +1,24 @@
 #! C:\Users\chris\.conda\envs\envyoga\python
 import preprocess as pp
 import pickle
-import sys
+import sys, os
 import getopt
 
-with open('Forest.mod', 'rb') as f:
+currentdir = os.path.dirname(os.path.realpath(__file__))
+# print(currentdir)
+sys.path.append(currentdir)
+# parentdir = os.path.dirname(currentdir)
+# print(parentdir)
+# grandparentdir = os.path.dirname(parentdir)
+# print(grandparentdir)
+# greatgrandparentdir = os.path.dirname(grandparentdir)
+# print(greatgrandparentdir)
+# sys.path.append(grandparentdir)
+
+with open(currentdir+'/Forest.mod', 'rb') as f:
     model = pickle.load(f)
 
-vectorizer = pickle.load(open("./vector.pickel", "rb"))
+vectorizer = pickle.load(open(currentdir+"/vector.pickel", "rb"))
 
 
 def remove_punctuation(text):
@@ -28,7 +39,7 @@ def predictFromString(inputString):
         print(predictions)
 
     else:
-        print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
+        print("py main.py -r <review>\npy main.py  -f | --file <reviewFile.csv> ")
         sys.exit(2)
 
 
@@ -46,7 +57,7 @@ def predictFromFile(filename):
         print(predictions)
 
     else:
-        print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
+        print("py main.py -r <review>\npy main.py  -f | --file <reviewFile.csv> ")
         sys.exit(2)
 
 def main(argv):
@@ -56,24 +67,24 @@ def main(argv):
     # print('sklearn: %s' % sklearn.__version__)
 
     try:
-        opts, args = getopt.getopt(argv, "r:f:", ["file"])
+        opts, args = getopt.getopt(argv, "hr:f:", ["file"])
     except:
-        print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
+        print("py main.py -r <review>\npy main.py  -f | --file <reviewFile.csv> ")
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == "-h":
-            print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
+            print("py main.py -r <review>\npy main.py  -f | --file <reviewFile.csv> ")
             sys.exit()
         elif opt in ("-f", "--file"):
-            print("is a file text")
+            # print("is a file text")
             inputReview = arg
-            print(inputReview)
+            # print(inputReview)
             predictFromFile(inputReview)
         elif opt in ("-r"):
-            print("is a  text")
+            # print("is a  text")
             inputReview = arg
-            print(inputReview)
+            # print(inputReview)
             predictFromString(inputReview)
     
     # print(args)

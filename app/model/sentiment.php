@@ -9,19 +9,33 @@ class Sentiment
     {
 
         $cwd = getcwd();
+        $cwd = str_replace("\\", "/", $cwd);
 
-        $path_to_model = "\\pythonmodel\\test.py";
+        $path_to_model = "./app/model/pythonmodel/main.py";
 
-        // echo "Executing " . $cwd . $path_to_model;
+
         $pyout = 0;
 
-        if ($isAFile) {
+        if (!$isAFile) {
             #jalanin script yang bakal handle input text 1 review
-            $pyout = exec("python " . $cwd . $path_to_model." $review");
+            $script = "python " . $path_to_model . " -r \"$review\"";
+            // echo "<br>Script is $script";
+            $pyout = exec($script);
         } else {
             #jalanin script yang bakal handle input file review
-            $pyout = exec("python " . $cwd . $path_to_model." -f $review");
+            $script = "python " . $path_to_model . " -f \"$review\"";
+            $pyout = exec("python " . $path_to_model . " -f $review");
         }
+
+
+        $pyout = str_replace("[", "", $pyout);
+        $pyout = str_replace("]", "", $pyout);
+        $pyout = explode(" ", $pyout);
+
+        // unset($pyout[0]);
+
+
+        // print_r($pyout);
 
         return $pyout;
     }

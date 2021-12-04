@@ -35,26 +35,60 @@ class  IndexController
     {
         #bagian processing untuk yang parameternya cuma 1
 
-        //Ambil parameter di url 
-        //Contoh request url :http://localhost:8080/?review="Agak kurang enak" , ambil parameternya pake $_GET['review]
-        
-        //$review = $_GET['review];
-        //$sentiment = \Model\Sentiment::handleSentiment($review, false);
-        // echo  \View\RenderView::render("pages\\indexview.php", ["sentiment"=>"$sentiment"]);
-        
+        if (isset($_GET["singleReview"]) && strlen($_GET["singleReview"]) > 0) {
+            $review = $_GET["singleReview"];
 
-        
-        echo \View\RenderView::render("pages\\indexview.php", ["sentiment" => "-1"]);
+            $sentiment = \Model\Sentiment::handleSentiment($review, false);
+
+            echo \View\RenderView::render("pages\\indexview.php", ["singleReview" => "$review", "sentiment" => "$sentiment"]);
+        } else {
+            echo \View\RenderView::render("pages\\indexview.php", ["sentiment" => "0"]);
+        }
     }
 
     public function post()
     {
-        #bagian processing untuk yang parameternya lebih dari satu / pake file csv
 
-        //$review = <Ambil file yang di upload>
-        //$sentiment = \Model\Sentiment::handleSentiment($review, true);
-        // echo  \View\RenderView::render("pages\\indexview.php", ["sentiment"=>"$sentiment"]);
+        if (isset($_POST["submit"]) && isset($_FILES["fileReview"])) {
 
-        echo  \View\RenderView::render("pages\\indexview.php", ["sentiment" => "1"]);
+            $filePath = \Controller\IndexController::instance()->handleUpload();
+            $sentiment = \Model\Sentiment::handleSentiment($filePath, true);
+            // print_r($sentiment);
+            echo  \View\RenderView::render("pages\\indexview.php", ["fileReview" => str_replace("/app/uploads/", "", $filePath), "sentiments" => $sentiment]);
+        } else {
+            echo \View\RenderView::render("pages\\indexview.php", ["sentiments" => "0"]);
+        }
+    }
+
+    public function handleUpload()
+    {
+        //Ref: https://www.w3schools.com/php/php_file_upload.asp
+        $target_dir = "app/uploads/";
+
+        $whitelistType = [".csv", "application/vnd.ms-excel"];
+
+        // print_r($_FILES);
+
+        // echo $target_file;
+        if (isset($_POST["submit"]) && isset($_FILES["fileReview"])) {
+            $name = $_FILES["fileReview"]["name"];
+            $explodedName = explode('.', $name);
+            $ext = strtolower(end($explodedName));
+            $type = $_FILES['fileReview']['type'];
+            $tmpName = $_FILES['fileReview']['tmp_name'];
+            $target_file = $target_dir . basename($_FILES["fileReview"]["name"]);
+
+            if ($_FILES['fileReview']["size"] > 4000000) {
+                echo "ukuran file terlalu besar";
+            } else if ($_FILES['fileReview']["error"] == 0 && $_FILES['fileReview']["size"] > 0) {
+                if (in_array($type, $whitelistType)) {
+                    $didUpload = move_uploaded_file($tmpName, $target_file);
+                    if ($didUpload) {
+                        // echo "The file " . basename($name) . " has been uploaded";
+                        return $target_file;
+                    }
+                }
+            }
+        }
     }
 }

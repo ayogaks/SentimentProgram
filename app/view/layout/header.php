@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="http://localhost/web-doctor/view/css/img/logo/logo.png" type="image/x-icon">
+
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
 </head>
 
 <body>

@@ -6,6 +6,10 @@
 
 import re
 from collections import Counter
+import os, sys
+
+currentdir = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(currentdir)
 
 
 # In[11]:
@@ -14,7 +18,7 @@ def words(text):
 
 
 # In[12]:
-WORDS = Counter(words(open('Corpus.txt', encoding= 'utf-8').read()))
+WORDS = Counter(words(open(currentdir+'/Corpus.txt', encoding= 'utf-8').read()))
 
 
 # In[13]:
