@@ -13,13 +13,13 @@
         body {
             background-color: white !important;
             width: 50%;
-            margin-left:25%;
-            margin-right:25%;
-            margin-top: 5% !important;
-            
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 2rem !important;
+
             padding: 5%;
 
-            
+
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -28,20 +28,76 @@
         }
 
         .UserInput {
-            display : flex;
-            flex-direction : column;
+            display: flex;
+            flex-direction: column;
             background-color: white !important;
         }
 
-        #myChart{
-            display : flex;
-            flex-direction : column;
+        #myChart {
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             margin-top: 10%;
-            margin-left:15%;
+            margin-left: 15%;
+        }
+
+        .singleReviewBox {
+            margin-top: 2rem;
         }
 
 
+        .fileReviewBox {
+            margin-top: 2rem;
+        }
+
+        #singleSubmit {
+            position: relative;
+            right: 0%;
+            margin-left: 2rem;
+        }
+
+        #fileSubmit {
+            position: relative;
+            right: 0%;
+            margin-left: 2rem;
+        }
+
+        #singleReview {
+            left: 0px;
+            margin-right: 2rem;
+            width: 50%;
+        }
+
+
+        #fileReview {
+            left: 0px;
+            margin-right: 2rem;
+            width: 50%;
+        }
+
+        .singleReviewInputBox {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: start;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fileReviewInputBox {
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            position: absolute;
+            display: flex;
+            bottom: 0px;
+        }
     </style>
 </head>
 
