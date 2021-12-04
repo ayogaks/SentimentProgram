@@ -2,6 +2,8 @@
     RewriteEngine on
     RewriteBase /
     
+    RewriteCond %{SCRIPT_FILENAME} !-l
+
     RewriteRule    ^$    app/index.php    [L]
     RewriteRule    (.*) app/index.php/$1    [L]
 </IfModule>
