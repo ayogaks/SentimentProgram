@@ -40,7 +40,7 @@ class  IndexController
 
             $sentiment = \Model\Sentiment::handleSentiment($review, false);
 
-            echo \View\RenderView::render("pages\\indexview.php", ["singleReview" => "$review", "sentiment" => "$sentiment"]);
+            echo \View\RenderView::render("pages\\indexview.php", ["singleReview" => "$review", "sentiment" => "$sentiment[0]"]);
         } else {
             echo \View\RenderView::render("pages\\indexview.php", ["sentiment" => "0"]);
         }

@@ -28,7 +28,12 @@ if (isset($sentiment) && $sentiment !== 0) {
     </form>
 </div>
 
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<?php
+if (isset($sentiments)) {
+    echo "<canvas id=\"myChart\" style=\"width:100%;max-width:600px\"></canvas>";
+}
+?>
+
 
 <?php
 #Ini yang berubah" sesuai input
