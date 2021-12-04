@@ -1,4 +1,4 @@
-
+#! C:\Users\chris\.conda\envs\envyoga\python
 import preprocess as pp
 import pickle
 import sys
@@ -7,7 +7,7 @@ import getopt
 with open('Forest.mod', 'rb') as f:
     model = pickle.load(f)
 
-vectorizer = pickle.load(open("vector.pickel", "rb"))
+vectorizer = pickle.load(open("./vector.pickel", "rb"))
 
 
 def remove_punctuation(text):
@@ -49,11 +49,14 @@ def predictFromFile(filename):
         print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
         sys.exit(2)
 
-
 def main(argv):
 
+        # check scikit-learn version
+    # import sklearn
+    # print('sklearn: %s' % sklearn.__version__)
+
     try:
-        opts, args = getopt.getopt(argv, "hi", ["file="])
+        opts, args = getopt.getopt(argv, "r:f:", ["file"])
     except:
         print("py main.py -r <review>\npy main.py ( -f | --file <reviewFile.csv> )")
         sys.exit(2)
@@ -65,12 +68,17 @@ def main(argv):
         elif opt in ("-f", "--file"):
             print("is a file text")
             inputReview = arg
-            predictFromFile(arg)
+            print(inputReview)
+            predictFromFile(inputReview)
         elif opt in ("-r"):
             print("is a  text")
             inputReview = arg
-            predictFromString(arg)
+            print(inputReview)
+            predictFromString(inputReview)
+    
+    # print(args)
 
 
-if __name__ == "__main__":
-    main(sys.argv[:1])
+if __name__ == "__main__": 
+    main(sys.argv[1:])
+    # print(sys.argv[1:])
