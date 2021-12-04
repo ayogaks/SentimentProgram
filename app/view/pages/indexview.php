@@ -1,35 +1,31 @@
 <?php
-#halaman viewnya di sini
-#Yang diedit buat ditampilin ke client di bagian ini
 
 $title = "Ramen's Sentiment Analysis App";
 
-echo "Ramen's Sentiment Analysis App";
+echo "<b>Ramen's Sentiment Analysis App</b>";
 
 echo "<p>Melakukan analisis terhadap data review ramen dan melakukan klasifikasi emosi terhadap review yang diberikan. Pemahaman makna dan emosi dari data ulasan itu penting untuk mengetahui apakah emosi seorang pelanggan kepada 
 produk berupa emosi positif atau negatif.</p>";
 ?>
 
 <?php
-    echo "<p>-- Masukan input pada User's Input untuk melihat makna ulasan </p></br>";
+    echo "<p textalign:justify;><b>User's Input</p></b></br>";
 ?>
 
 <div class="UserInput">
-    <form action="/" method="GET">
-        <div>
-            <label>Single Review Analysis</label>
-            <label for="singleReview">Enter single review below: </label>
-            <input type="text" name="singleReview">
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-
     <form action="/" method="POST" enctype="multipart/form-data">
         <div>
             <label>Multiple Review Analysis</label>
-            <label for="fileReview">Upload .csv file</label>
             <input type="file" accept=".csv" name="fileReview" id="fileReview" />
             <button type="submit" name="submit">Submit</button>
+        </div>
+    </form>
+
+    <form action="/" method="GET">
+        <div>
+            <label>Single Review Analysis</label>  
+            <input type="text" name="singleReview">
+            <button type="submit">Submit</button>
         </div>
     </form>
 </div>
@@ -40,20 +36,17 @@ if (isset($sentiments)) {
 }
 ?>
 
-
 <?php
 if (isset($sentiment) && $sentiment != 0) {
     echo "<br> Hasil dari review produk Anda merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
 }
 ?>
 
-
 <script>
     var xValues = [-1, 1];
     var yValues =
         <?php
-        //ref: https://stackoverflow.com/questions/10315259/php-count-the-appearance-of-particular-value-in-array
-
+    
         $counts = [0, 0];
         if (isset($sentiments)) {
             foreach ($sentiments as  $val) {
@@ -67,7 +60,8 @@ if (isset($sentiment) && $sentiment != 0) {
 
         echo "[ $counts[0] , $counts[1] ]";
         ?>;
-    var barColors = ["green", "blue"];
+
+    var barColors = ["aqua", "aqua"];
     var chartTitle = <?php if (isset($fileReview)) {
                             echo "\"Sentiment dari file " . str_replace("app/uploads/", "", $fileReview) . "\"";
                         } else {

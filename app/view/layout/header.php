@@ -11,13 +11,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
         body {
-            background-color: aqua !important;
+            background-color: white !important;
+            width: 40%;
+            margin: 200px;
+            padding: 20px;
+
+            
+            box-sizing: border-box;
+
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
         }
 
         .UserInput {
-            display: flex;
-            background-color: aqua !important;
+            display : flex;
+            flex-direction : column
+            background-color: white !important;
         }
+
+
+
+
     </style>
 </head>
 
