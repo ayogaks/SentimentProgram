@@ -1,14 +1,17 @@
 <?php
 #halaman viewnya di sini
 #Yang diedit buat ditampilin ke client di bagian ini
-$title = "Sentiment Analyzer";
+
+$title = "Ramen's Sentiment Analysis App";
+
+echo "Ramen's Sentiment Analysis App";
 
 echo "<p>Melakukan analisis terhadap data review ramen dan melakukan klasifikasi emosi terhadap review yang diberikan. Pemahaman makna dan emosi dari data ulasan itu penting untuk mengetahui apakah emosi seorang pelanggan kepada 
 produk berupa emosi positif atau negatif.</p>";
+?>
 
-if (isset($sentiment) && $sentiment != 0) {
-    echo "<br> Hasil dari review " . (isset($singleReview) ? "<strong>" . $singleReview . "</strong>" : "") . " merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
-}
+<?php
+    echo "<p>-- Masukan input pada User's Input untuk melihat makna ulasan </p></br>";
 ?>
 
 <div class="UserInput">
@@ -39,9 +42,8 @@ if (isset($sentiments)) {
 
 
 <?php
-#Ini yang berubah" sesuai input
 if (isset($sentiment) && $sentiment != 0) {
-    echo "<p>-- Masukan input pada User's Input untuk melihat makna ulasan <strong>" . ($sentiment > 0 ? " Positif" : " Negatif") . "</strong>.</p></br>";
+    echo "<br> Hasil dari review produk Anda merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
 }
 ?>
 
