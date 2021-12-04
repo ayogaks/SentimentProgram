@@ -1,5 +1,5 @@
 <footer>
-    <p>&copy Copyright Yoga Kristanto</p>
+    <p>&copy Copyright Yoga Krisanto</p>
 </footer>
 </body>
 
