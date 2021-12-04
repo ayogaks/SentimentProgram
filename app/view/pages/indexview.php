@@ -38,7 +38,8 @@ if (isset($sentiments)) {
 
 <?php
 if (isset($sentiment) && $sentiment != 0) {
-    echo "<br> Hasil dari review produk Anda merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
+    echo "<br><p>Review : <strong>".$singleReview."</strong>";
+    echo "<br> <p>Hasil dari review produk Anda merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
 }
 ?>
 

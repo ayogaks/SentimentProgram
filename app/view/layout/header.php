@@ -12,23 +12,34 @@
     <style>
         body {
             background-color: white !important;
-            width: 40%;
-            margin: 200px;
-            padding: 20px;
+            width: 50%;
+            margin-left:25%;
+            margin-right:25%;
+            margin-top: 5% !important;
+            
+            padding: 5%;
 
             
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
 
             font-family: "Comic Sans MS", "Comic Sans", cursive;
         }
 
         .UserInput {
             display : flex;
-            flex-direction : column
+            flex-direction : column;
             background-color: white !important;
         }
 
-
+        #myChart{
+            display : flex;
+            flex-direction : column;
+            justify-content: center;
+            margin-top: 10%;
+            margin-left:15%;
+        }
 
 
     </style>

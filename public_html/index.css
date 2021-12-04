@@ -4,5 +4,7 @@ body{
 
 .UserInput{
     display: flex;
+    flex-direction:  column;
+    flex-wrap: wrap;
     background-color: aqua !important;
 }

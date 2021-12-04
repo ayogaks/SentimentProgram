@@ -1,5 +1,5 @@
 <footer>
-    <p>&copy Copyright &leq;Name here&geq;</p>
+    <p>&copy Copyright Yoga Kristanto</p>
 </footer>
 </body>
 

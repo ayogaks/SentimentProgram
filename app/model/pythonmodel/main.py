@@ -1,4 +1,4 @@
-#! C:\Users\chris\.conda\envs\envyoga\python
+
 import preprocess as pp
 import pickle
 import sys, os
