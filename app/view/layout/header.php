@@ -94,8 +94,9 @@
         }
 
         footer {
-            position: absolute;
+            position: static;
             display: flex;
+            margin-top: 5%;
             bottom: 0px;
         }
     </style>
