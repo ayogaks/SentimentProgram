@@ -2,9 +2,12 @@
 #halaman viewnya di sini
 #Yang diedit buat ditampilin ke client di bagian ini
 $title = "Sentiment Analyzer";
-if (isset($sentiment) && $sentiment !== 0) {
-    echo "<p>Melakukan analisis terhadap data review ramen dan melakukan klasifikasi emosi terhadap review yang diberikan. Pemahaman makna dan emosi dari data ulasan itu penting untuk mengetahui apakah emosi seorang pelanggan kepada 
-    produk berupa emosi positif atau negatif.<br> Hasil dari review " . (isset($singleReview) ? "<strong>" . $singleReview . "</strong>" : "") . " merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
+
+echo "<p>Melakukan analisis terhadap data review ramen dan melakukan klasifikasi emosi terhadap review yang diberikan. Pemahaman makna dan emosi dari data ulasan itu penting untuk mengetahui apakah emosi seorang pelanggan kepada 
+produk berupa emosi positif atau negatif.</p>";
+
+if (isset($sentiment) && $sentiment != 0) {
+    echo "<br> Hasil dari review " . (isset($singleReview) ? "<strong>" . $singleReview . "</strong>" : "") . " merupakan sentimen <strong>" . ($sentiment > 0 ? "Positif" : "Negatif") . "</strong>.</p></br>";
 }
 ?>
 
@@ -37,8 +40,8 @@ if (isset($sentiments)) {
 
 <?php
 #Ini yang berubah" sesuai input
-if (isset($sentiment) && $sentiment !== 0) {
-    echo "<p>-- Masukan input pada User's Input untuk melihat makna ulasan" . ($sentiment > 0 ? " Positif" : " Negatif") . "</strong>.</p></br>";
+if (isset($sentiment) && $sentiment != 0) {
+    echo "<p>-- Masukan input pada User's Input untuk melihat makna ulasan <strong>" . ($sentiment > 0 ? " Positif" : " Negatif") . "</strong>.</p></br>";
 }
 ?>
 
@@ -48,14 +51,18 @@ if (isset($sentiment) && $sentiment !== 0) {
     var yValues =
         <?php
         //ref: https://stackoverflow.com/questions/10315259/php-count-the-appearance-of-particular-value-in-array
+
         $counts = [0, 0];
-        foreach ($sentiments as  $val) {
-            if ($val == 1) {
-                $counts[1] = $counts[1] + 1;
-            } else if ($val == -1) {
-                $counts[0] = $counts[0] + 1;
+        if (isset($sentiments)) {
+            foreach ($sentiments as  $val) {
+                if ($val == 1) {
+                    $counts[1] = $counts[1] + 1;
+                } else if ($val == -1) {
+                    $counts[0] = $counts[0] + 1;
+                }
             }
         }
+
         echo "[ $counts[0] , $counts[1] ]";
         ?>;
     var barColors = ["green", "blue"];

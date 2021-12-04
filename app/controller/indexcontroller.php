@@ -54,7 +54,7 @@ class  IndexController
             $filePath = \Controller\IndexController::instance()->handleUpload();
             $sentiment = \Model\Sentiment::handleSentiment($filePath, true);
             // print_r($sentiment);
-            echo  \View\RenderView::render("pages\\indexview.php", ["fileReview" => str_replace("/app/uploads/", "", $filePath), "sentiments" => $sentiment]);
+            echo  \View\RenderView::render("pages\\indexview.php", ["fileReview" => str_replace("app/uploads/", "", $filePath), "sentiments" => $sentiment]);
         } else {
             echo \View\RenderView::render("pages\\indexview.php", ["sentiments" => "0"]);
         }
