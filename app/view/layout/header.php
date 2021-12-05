@@ -37,8 +37,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-top: 10%;
-            margin-left: 15%;
+            margin-top: 5%;
+            margin-left: 5%;
         }
 
         .singleReviewBox {
@@ -94,7 +94,10 @@
         }
 
         footer {
+<<<<<<< Updated upstream
             position: static;
+=======
+>>>>>>> Stashed changes
             display: flex;
             margin-top: 5%;
             bottom: 0px;

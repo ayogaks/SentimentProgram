@@ -6,10 +6,8 @@ echo "<b>Ramen's Sentiment Analysis App</b>";
 
 echo "<p>Melakukan analisis terhadap data review ramen dan melakukan klasifikasi emosi terhadap review yang diberikan. Pemahaman makna dan emosi dari data ulasan itu penting untuk mengetahui apakah emosi seorang pelanggan kepada 
 produk berupa emosi positif atau negatif.</p>";
-?>
 
-<?php
-echo "<p textalign:justify;><b>User's Input</p></b></br>";
+echo "<b>User's Input</b>";
 ?>
 
 <div class="UserInput">
