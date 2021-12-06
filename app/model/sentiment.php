@@ -24,9 +24,10 @@ class Sentiment
         } else {
             #jalanin script yang bakal handle input file review
             $script = "python " . $path_to_model . " -f \"$review\"";
-            $pyout = exec("python " . $path_to_model . " -f $review");
+            $pyout = shell_exec("python " . $path_to_model . " -f $review");
         }
 
+        // print_r($pyout);
 
         $pyout = str_replace("[", "", $pyout);
         $pyout = str_replace("]", "", $pyout);
@@ -35,7 +36,6 @@ class Sentiment
         // unset($pyout[0]);
 
 
-        // print_r($pyout);
 
         return $pyout;
     }

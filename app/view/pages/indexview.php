@@ -71,6 +71,12 @@ if (isset($sentiment) && $sentiment != 0) {
                         } else {
                             echo "\"Sentiment dari file\"";
                         } ?>;
+    var stepSize = <?php 
+        $maxValue = max($counts[0], $counts[1]);
+
+        $percentile = ceil($maxValue / 10); 
+        echo ($percentile ? $percentile : 1 ).";\n";
+    ?>
     new Chart("myChart", {
         type: "bar",
         data: {
@@ -93,7 +99,8 @@ if (isset($sentiment) && $sentiment != 0) {
                 yAxes: [{
                     ticks: {
                         min: 0,
-                        stepSize: 1
+                        stepSize: stepSize,
+                        max : (Math.max(yValues[0], yValues[1]))+stepSize
                     }
                 }]
             }

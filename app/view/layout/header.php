@@ -94,10 +94,6 @@
         }
 
         footer {
-<<<<<<< Updated upstream
-            position: static;
-=======
->>>>>>> Stashed changes
             display: flex;
             margin-top: 5%;
             bottom: 0px;
